@@ -3,21 +3,30 @@
 <div class="neighborhoods" ng-show="!selectedHood">
 	<h1>Choose Neighborhood</h1>
 	<hr/>
-	<div ng-repeat="hood in hoods" ng-click="selectHood( hood )">
-		<h1>{{ hood }}</h1>
+	<div class="neighborhoodTile" ng-repeat="item in hoods" ng-click="selectHood( item )" my-background-image="Neighborhoods">
+		<div class="layer">
+			<h1>{{ item }}</h1>
+		</div>
 	</div>
 </div>
 
 <div class="options" ng-show="selectedHood && !selectedOption">
 	<h1>Choose Option</h1>
 	<hr/>
-	<div ng-repeat="option in options" ng-click="selectOption( option )">
-		<h1>{{ option }}</h1>
+	<div class="optionsTile" ng-repeat="item in options" ng-click="selectOption( item )" my-background-image="Food">
+		<div class="layer">
+			<h1>{{ item }}</h1>
+		</div>
 	</div>
 </div>
 
 <div class="results" ng-show="selectedHood && selectedOption">
 	<h1>Best {{ selectedOption }} in {{ selectedHood }}</h1>
+	<hr/>
+	<div ng-repeat="item in results">
+		<img ng-src="{{ item.img }}"/>
+		<h1>{{ item.name }}</h1>
+	</div>
 </div>
 
 <div class="other">

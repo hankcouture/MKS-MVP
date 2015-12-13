@@ -1,26 +1,54 @@
 body {
-  margin: 0;
-  margin-top: 10px;
+  margin-top: 0px;
   font-family: 'Open Sans', arial, sans-serif;
   background-color: #f9f9f9;
   text-align: center;
 }
+
+nav {
+	width: 100%;
+	height: 40px;
+	background-color: #f5f5f5;
+	border-bottom: 1px solid #e5e5e5;
+	margin-top: 0px;
+}
+
+nav h1 {
+	margin: 0px;
+	padding: 3px;
+}
+
+
 
 .neighborhoods {
 	width: 90%;
 	margin: 10px auto;
 }
 
-.neighborhoods div {
+.neighborhoodTile {
 	float: left;
-	padding: 1%;
-	margin: 1%;
-	width: 20%;
-	border: 1px solid #DcDcDc;
-	border-radius: 5px;
+	color: #fff;
+	padding: 5% 2%;
+	margin: 0%;
+	height: 60px;
+	width: 20.5%;
+	border: 1px solid #fff;
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-	background-color: #c7c7c7;
 	cursor: pointer;
+	position: relative;
+}
+
+.neighborhoodTile h1 {
+	padding-top: 15%;
+}
+
+.layer {
+    background-color: rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .neighborhoods div:hover {
@@ -38,18 +66,30 @@ body {
 	margin: 10px auto;
 }
 
-.options div {
+.optionsTile {
 	float: left;
-	padding: 1%;
-	margin: 1%;
-	width: 20%;
-	border: 1px solid #DcDcDc;
-	border-radius: 5px;
+	color: #fff;
+	padding: 5% 2%;
+	margin: 0%;
+	height: 60px;
+	width: 20.5%;
+	border: 1px solid #fff;
 	box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
-	background-color: #c7c7c7;
 	cursor: pointer;
+	position: relative;
+}
+
+.optionsTile h1 {
+	padding-top: 15%;
 }
 
 .options div:hover {
 	opacity: 0.5;
 }
+
+.results {
+	width: 90%;
+	clear: both;
+	margin: 10px auto;
+}
+
