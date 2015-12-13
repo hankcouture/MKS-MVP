@@ -1,24 +1,22 @@
 var neighborhoods = angular.module('mvp.neighborhoods', [])
 
 neighborhoods.controller('NeighborhoodController', ['$scope', function($scope) {
-  $scope.hoods = ["Wicker Park", "Lincoln Park", "Logan Square", "River North", "The Loop", "Lakeview", "Pilsen", "West Loop"];
+  $scope.hoods = ["Wicker Park", "Lincoln Park", "Logan Square", "River North", "The Loop", "Lakeview", "Pilsen", "West Loop"
+  					, "Andersonville", "South Loop", "Hyde Park", "Bucktown"
+  				];
+  $scope.options = ["Coffee", "Beer", "Thai", "Burgers", "Italian", "Tacos", "Pizza", "Indian"];
+
+  $scope.results = [];
+
+  $scope.selectedHood = undefined;
+  $scope.selectedOption = undefined;
+  $scope.selectHood = function(hood) {
+	$scope.selectedHood = hood;
+  }
+  $scope.selectOption = function(option) {
+  	$scope.selectedOption = option;
+  	console.log('Hood: ', $scope.selectedHood);
+  	console.log('Option: ', $scope.selectedOption);
+  }
+
 }]);
-
-
-
-
-
-var state1 = angular.module('mvp.state1', [])
-
-state1.controller('State1Controller', ['$scope', function($scope) {
-  $scope.items = ["A", "List", "Of", "Items"];
-}]);
-
-
-var state2 = angular.module('mvp.state2', [])
-
-state2.controller('State2Controller', ['$scope', function($scope) {
-  $scope.things = ["A", "List", "Of", "THINGS"];
-}]);
-
-

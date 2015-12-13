@@ -1,0 +1,25 @@
+<!-- views/state1.html -->
+
+<div class="neighborhoods" ng-show="!selectedHood">
+	<h1>Choose Neighborhood</h1>
+	<hr/>
+	<div ng-repeat="hood in hoods" ng-click="selectHood( hood )">
+		<h1>{{ hood }}</h1>
+	</div>
+</div>
+
+<div class="options" ng-show="selectedHood && !selectedOption">
+	<h1>Choose Option</h1>
+	<hr/>
+	<div ng-repeat="option in options" ng-click="selectOption( option )">
+		<h1>{{ option }}</h1>
+	</div>
+</div>
+
+<div class="results" ng-show="selectedHood && selectedOption">
+	<h1>Best {{ selectedOption }} in {{ selectedHood }}</h1>
+</div>
+
+<div class="other">
+	<div ui-view></div>
+</div>
