@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
+    "node-foursquare-venues": "^1.1.0",
     "nodemon": "^1.8.1",
     "yelp": "^1.0.1"
   }

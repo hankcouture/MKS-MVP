@@ -1,7 +1,7 @@
 var YelpJS = require('yelp');
 var tokens = require('./tokens')
 
-var yelp = new YelpJS(tokens.apiData);
+var yelp = new YelpJS(tokens.yelpData);
 
 // See http://www.yelp.com/developers/documentation/v2/search_api
 

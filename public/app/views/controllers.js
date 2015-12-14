@@ -27,19 +27,25 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
       url: '/',
       data: {
       	term: $scope.selectedOption,
-      	location: $scope.selectedHood +', Chicago, IL',
+      	location: $scope.selectedHood +', IL',
       }
     })
     .then(function (res) {
-    	var biz = res.data.businesses;
-    	for (var i = 0; i < biz.length; i++) {
+    	var yelp = res.data.Yelp.businesses;
+    	for (var i = 0; i < yelp.length; i++) {
     		var result = {
-    			name: biz[i].name,
-    			rating: biz[i].rating_img_url,
-    			img: biz[i].image_url
+    			name: yelp[i].name + ': ' + yelp[i].rating
     		}
     		$scope.results.push(result);
 		}
+		var foursquare = res.data.Foursquare.response.groups[0].items;
+		for (var x = 0; x < foursquare.length; x++) {
+    		var result = {
+    			name: foursquare[x].venue.name + ': ' + foursquare[x].venue.rating
+    		}
+    		$scope.results.push(result);
+		}
+		console.log(foursquare)
       console.log('results: ', res.data)
       return res.data;
     });

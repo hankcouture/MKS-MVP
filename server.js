@@ -2,6 +2,7 @@ var http = require("http");
 var fs = require('fs');
 var express = require('express');
 var yelp = require('./yelp');
+var foursquare = require('./foursquare');
 
 // Using Express.js
 var app = express();
@@ -19,8 +20,18 @@ app.post('/', function(req, res) {
 	req.on('data', function (data) {
         dataParsed = JSON.parse(data);
         console.log(dataParsed);
-        yelp.search(dataParsed.term, dataParsed.location, function(data){
-			res.end(JSON.stringify(data));
+        yelp.search(dataParsed.term, dataParsed.location, function(yData){
+        	var yelpData = yData;
+        	foursquare.search(dataParsed.term, dataParsed.location, function(err, fData) {
+        		console.log(err)
+        		console.log(fData)
+	        	var foursquareData = fData;
+	        	var results = {
+	        		Yelp: yData,
+	        		Foursquare: fData
+	        	};
+				res.end(JSON.stringify(results));
+        	})
         });
     });
 })
