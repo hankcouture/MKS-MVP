@@ -41,6 +41,9 @@
 			<p>Reviews: {{ item.reviewCount }}</p>
 		</div>
 	</div> -->
+	<div id="map-container">
+		<div id="map"></div>
+	</div>
 	<div class="results-container">
 		<!-- <h1>{{ filteredResults.length }} / {{ results.Yelp.length }}</h1> -->
 		<div class="biz-card" ng-repeat="item in filteredResults | orderBy: '-rating'">

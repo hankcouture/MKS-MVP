@@ -94,7 +94,7 @@ nav h1 {
 }
 
 .results-container {
-	width: 33%;
+	width: 40%;
 	float: left;
 }
 
@@ -111,8 +111,23 @@ nav h1 {
 	padding: 5px;
 }
 
+.biz-card:hover {
+	opacity: 0.5;
+}
+
 .biz-card img {
 	margin: 5px 20px 5px 5px;
 	float: left;
 	height: 80px;
+}
+
+#map-container {
+	width: 57%;
+	position: fixed;
+	margin-left: 36%;
+
+}
+
+#map {
+	height: 500px;
 }

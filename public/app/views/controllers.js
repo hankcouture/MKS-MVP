@@ -52,9 +52,11 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   				}
   				var biz = {
   					name: $scope.results.Yelp[y].name,
+  					address: $scope.results.Yelp[y].address,
   					rating: calcRating($scope.results.Yelp[y].rating, $scope.results.Foursquare[f].rating),
   					reviewCount: $scope.results.Yelp[y].reviewCount + $scope.results.Foursquare[f].reviewCount,
-  					image: $scope.results.Yelp[y].image
+  					image: $scope.results.Yelp[y].image,
+  					coordinates: $scope.results.Yelp[y].coordinates
   				}
   				$scope.filteredResults.push(biz)
   			}
@@ -94,7 +96,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 				address: yelp[i].location.display_address[0],
 				phone: yelp[i].phone,
 				reviewCount: yelp[i].review_count,
-				image: yelp[i].image_url
+				image: yelp[i].image_url,
+				coordinates: yelp[i].location.coordinate
 			}
 			$scope.results.Yelp.push(result);
 		}
@@ -110,15 +113,40 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 			$scope.results.Foursquare.push(result);
 		}
 		$scope.algo();
-		console.log('results: ', res.data)
+		console.log('Results: ', $scope.filteredResults);
+		$scope.initMap($scope.filteredResults);
+		console.log('res', res.data)
 		return res.data;
     });
   }
 		
+  $scope.initMap = function(locations) {
+    var mapLatLng = {lat: $scope.selectedHood[1][0], lng: $scope.selectedHood[1][1]};
 
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: mapLatLng
+    });
 
-
-
+    var markers = [];
+    for (var m = 0; m < locations.length; m++) {
+    	var info = {}
+    	info.infowindow = new google.maps.InfoWindow({
+		    content: locations[m].name
+		  });
+    	info.loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
+    	info.marker = new google.maps.Marker({
+	      position: info.loc,
+	      map: map,
+	      title: 'Hello World!'
+	    });
+	    info.marker.addListener('click', function() {
+		    info.infowindow.open(map, info.marker);
+		  });
+	    markers[m] = info;
+    }
+  	console.log(markers);
+  }
 
 
 }]);
