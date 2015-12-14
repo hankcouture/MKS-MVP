@@ -93,3 +93,26 @@ nav h1 {
 	margin: 10px auto;
 }
 
+.results-container {
+	width: 33%;
+	float: left;
+}
+
+.biz-card h3, p {
+	margin: 5px;
+}
+
+.biz-card {
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	margin: 5px;
+	text-align: left;
+	padding: 5px;
+}
+
+.biz-card img {
+	margin: 5px 20px 5px 5px;
+	float: left;
+	height: 80px;
+}

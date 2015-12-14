@@ -5,27 +5,50 @@
 	<hr/>
 	<div class="neighborhoodTile" ng-repeat="item in hoods" ng-click="selectHood( item )" my-background-image="Neighborhoods">
 		<div class="layer">
-			<h1>{{ item }}</h1>
+			<h1>{{ item[0] }}</h1>
 		</div>
 	</div>
 </div>
+
+<div>{{ map }}</div>
 
 <div class="options" ng-show="selectedHood && !selectedOption">
 	<h1>Choose Option</h1>
 	<hr/>
 	<div class="optionsTile" ng-repeat="item in options" ng-click="selectOption( item )" my-background-image="Food">
 		<div class="layer">
-			<h1>{{ item }}</h1>
+			<h1>{{ item[0] }}</h1>
 		</div>
 	</div>
 </div>
 
+
 <div class="results" ng-show="selectedHood && selectedOption">
-	<h1>Best {{ selectedOption }} in {{ selectedHood }}</h1>
-	<hr/>
-	<div ng-repeat="item in results">
-		<img ng-src="{{ item.img }}"/>
-		<h1>{{ item.name }}</h1>
+	<h1>Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
+<!-- 	<div class="results-container">
+		<div ng-repeat="item in results.Yelp">
+			<img ng-src="{{ item.img }}"/>
+			<h3>{{ item.name }}</h3>
+			<p>{{ item.address }}</p>
+			<p>Reviews: {{ item.reviewCount }}</p>
+		</div>
+	</div>
+	<div class="results-container">
+		<div ng-repeat="item in results.Foursquare">
+			<img ng-src="{{ item.img }}"/>
+			<h3>{{ item.name }}</h3>
+			<p>{{ item.address }}</p>
+			<p>Reviews: {{ item.reviewCount }}</p>
+		</div>
+	</div> -->
+	<div class="results-container">
+		<!-- <h1>{{ filteredResults.length }} / {{ results.Yelp.length }}</h1> -->
+		<div class="biz-card" ng-repeat="item in filteredResults | orderBy: '-rating'">
+			<img ng-src="{{ item.image }}" />
+			<h3>{{ item.name }}</h3>
+			<p>{{ item.rating }} / 10</p>
+			<p>{{ item.reviewCount }} reviews</p>
+		</div>
 	</div>
 </div>
 

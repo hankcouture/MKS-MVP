@@ -1,6 +1,6 @@
 var tokens = require('./tokens')
 var foursquare = require('node-foursquare-venues')(tokens.foursquareData.client_ID, tokens.foursquareData.client_Secret)
 
-exports.search = function(termSearch, locationSearch, callback) {
-		foursquare.venues.explore({ near: locationSearch, query: termSearch }, callback)
+exports.search = function(termSearch, coordinates, callback) {
+		foursquare.venues.explore({ ll: coordinates[0]+', '+coordinates[1], query: termSearch }, callback)
 	}
