@@ -1,8 +1,11 @@
 <!-- views/state1.html -->
+<nav>
+  <h1 ng-show="!selectedHood">Choose Neighborhood</h1>
+  <h1 ng-show="selectedHood && !selectedOption">Choose Option</h1>
+  <h1 ng-show="selectedHood && selectedOption">Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
+</nav>
 
 <div class="neighborhoods" ng-show="!selectedHood">
-	<h1>Choose Neighborhood</h1>
-	<hr/>
 	<div class="neighborhoodTile" ng-repeat="item in hoods" ng-click="selectHood( item )" my-background-image="Neighborhoods">
 		<div class="layer">
 			<h1>{{ item[0] }}</h1>
@@ -13,8 +16,6 @@
 <div>{{ map }}</div>
 
 <div class="options" ng-show="selectedHood && !selectedOption">
-	<h1>Choose Option</h1>
-	<hr/>
 	<div class="optionsTile" ng-repeat="item in options" ng-click="selectOption( item )" my-background-image="Food">
 		<div class="layer">
 			<h1>{{ item[0] }}</h1>
@@ -24,23 +25,6 @@
 
 
 <div class="results" ng-show="selectedHood && selectedOption">
-	<h1>Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
-<!-- 	<div class="results-container">
-		<div ng-repeat="item in results.Yelp">
-			<img ng-src="{{ item.img }}"/>
-			<h3>{{ item.name }}</h3>
-			<p>{{ item.address }}</p>
-			<p>Reviews: {{ item.reviewCount }}</p>
-		</div>
-	</div>
-	<div class="results-container">
-		<div ng-repeat="item in results.Foursquare">
-			<img ng-src="{{ item.img }}"/>
-			<h3>{{ item.name }}</h3>
-			<p>{{ item.address }}</p>
-			<p>Reviews: {{ item.reviewCount }}</p>
-		</div>
-	</div> -->
 	<div id="map-container">
 		<div id="map"></div>
 	</div>
@@ -49,9 +33,28 @@
 		<div class="biz-card" ng-repeat="item in filteredResults | orderBy: '-rating'">
 			<img ng-src="{{ item.image }}" />
 			<h3>{{ item.name }}</h3>
+			<p>{{ item.address }}</p>
 			<p>{{ item.rating }} / 10</p>
 			<p>{{ item.reviewCount }} reviews</p>
 		</div>
+<!-- 		<hr/>
+		<h1>Yelp</h1>
+		<div ng-repeat="item in results.Yelp">
+			<img ng-src="{{ item.img }}"/>
+			<h3>{{ item.name }}</h3>
+			<p>{{ item.address }}</p>
+			<p>{{ item.rating }}</p>
+			<p>Reviews: {{ item.reviewCount }}</p>
+		</div>
+		<hr/>
+		<h1>FourSquare</h1>
+		<div ng-repeat="item in results.Foursquare">
+			<img ng-src="{{ item.img }}"/>
+			<h3>{{ item.name }}</h3>
+			<p>{{ item.address }}</p>
+			<p>{{ item.rating }}</p>
+			<p>Reviews: {{ item.reviewCount }}</p>
+		</div> -->
 	</div>
 </div>
 

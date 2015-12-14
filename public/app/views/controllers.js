@@ -128,24 +128,30 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
       center: mapLatLng
     });
 
-    var markers = [];
     for (var m = 0; m < locations.length; m++) {
-    	var info = {}
-    	info.infowindow = new google.maps.InfoWindow({
+    	infowindow = new google.maps.InfoWindow({
 		    content: locations[m].name
 		  });
-    	info.loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
-    	info.marker = new google.maps.Marker({
-	      position: info.loc,
+    	var content = locations[m].name;
+    	loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
+    	marker = new google.maps.Marker({
+	      position: loc,
 	      map: map,
-	      title: 'Hello World!'
+	      title: locations[m].name
 	    });
-	    info.marker.addListener('click', function() {
-		    info.infowindow.open(map, info.marker);
-		  });
-	    markers[m] = info;
+	    google.maps.event.addListener(marker,'mouseover', (function(marker,content,infowindow){ 
+		    return function() {
+		        infowindow.setContent(content);
+		        infowindow.open(map, marker);
+		        console.log('hello')
+		    };
+		})(marker,content,infowindow));
+		google.maps.event.addListener(marker,'mouseout', (function(marker,content,infowindow){ 
+		    return function() {
+		        infowindow.close();
+		    };
+		})(marker,content,infowindow));
     }
-  	console.log(markers);
   }
 
 
