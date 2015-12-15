@@ -38,21 +38,26 @@
 			<div class="yelpRating">{{ item.yelpRating }}<i class="fa fa-yelp"></i></div>
 			<p>{{ item.address }}</p>
 			<p>{{ item.reviewCount }} reviews</p>
+			<ul class="categories">
+				<li ng-repeat="category in item.categories">{{ category[0] }}</li>
+			</ul>
 		</div>
-<!-- 		<hr/>
-		<h1>Yelp</h1>
-		<div ng-repeat="item in results.Yelp">
-			<img ng-src="{{ item.img }}"/>
+<!-- 		<div class="biz-card" ng-repeat="item in results.Yelp">
+			<img ng-src="{{ item.image }}"/>
 			<h3>{{ item.name }}</h3>
+			<div class="yelpRating">{{ item.rating }}<i class="fa fa-yelp"></i></div>
 			<p>{{ item.address }}</p>
-			<p>{{ item.rating }}</p>
-			<p>Reviews: {{ item.reviewCount }}</p>
+			<p>{{ item.reviewCount }} reviews</p>
+			<ul class="categories">
+				<li ng-repeat="category in item.categories">{{ category[0] }}</li>
+			</ul>
 		</div>
 		<hr/>
 		<h1>FourSquare</h1>
-		<div ng-repeat="item in results.Foursquare">
+		<div class="biz-card" ng-repeat="item in results.Foursquare">
 			<img ng-src="{{ item.img }}"/>
 			<h3>{{ item.name }}</h3>
+			<div class="foursquareRating">{{ item.rating }}<i class="fa fa-foursquare"></i></div>
 			<p>{{ item.address }}</p>
 			<p>{{ item.rating }}</p>
 			<p>Reviews: {{ item.reviewCount }}</p>

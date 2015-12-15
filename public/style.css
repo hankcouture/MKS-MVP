@@ -93,12 +93,16 @@ nav h1 {
 }
 
 .results-container {
-	width: 40%;
+	width: 45%;
 	float: left;
 }
 
 .biz-card h3, p {
-	margin: 5px;
+	margin: 3px;
+}
+
+.biz-card p {
+	font-size: 13px;
 }
 
 .biz-card-rating {
@@ -122,19 +126,23 @@ nav h1 {
 .biz-card img {
 	margin: 5px 10px;
 	float: left;
-	height: 80px;
+	height: 91px;
 }
 
 #map-container {
-	width: 50%;
+	width: 47%;
 	position: fixed;
-	margin-left: 36%;
+	margin-left: 41%;
 	border: 1px solid #e5e5e5;
 	border-radius: 5px;
 }
 
 #map {
 	height: 500px;
+}
+
+.infoWindow {
+	width: 100px;
 }
 
 .yelpRating {
@@ -147,7 +155,7 @@ nav h1 {
 	border-radius: 3px;
 	width: 45px;
 	float: right;
-	margin: 20px 5px 0px;
+	margin: 39px 5px 0px;
 }
 
 .foursquareRating {
@@ -160,9 +168,27 @@ nav h1 {
 	border-radius: 3px;
 	width: 45px;
 	float: right;
-	margin: 20px 5px 0px;
+	margin: 39px 5px 0px;
 }
 
 .fa {
 	margin-left: 5px;
+}
+
+.categories {
+	margin: 5px;
+	height: 20px;
+
+}
+
+.categories li {
+	list-style-type: none;
+	float: left;
+	background-color: #f9f9f9;
+	margin-right: 4px;
+	font-size: 11px;
+	padding: 2px 3px;
+	color: #000;
+	border: 1px solid #e5e5e5;
+	border-radius: 2px;
 }

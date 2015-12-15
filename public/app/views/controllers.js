@@ -68,9 +68,12 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   					reviewCount: $scope.results.Yelp[y].reviewCount + $scope.results.Foursquare[f].reviewCount,
   					image: $scope.results.Yelp[y].image,
   					coordinates: $scope.results.Yelp[y].coordinates,
-  					yelpRating: $scope.results.Yelp[y].rating.toFixed(1),
-  					foursquareRating: $scope.results.Foursquare[f].rating.toFixed(1)
+  					categories: $scope.results.Yelp[y].categories,
+  					yelpRating: $scope.results.Yelp[y].rating,
+  					foursquareRating: $scope.results.Foursquare[f].rating
   				}
+  				// var removed = $scope.results.Yelp.splice(y, 1);
+  				// console.log(removed);
   				$scope.filteredResults.push(biz)
   			}
   		}
@@ -103,14 +106,19 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
     .then(function (res) {
 		var yelp = res.data.Yelp.businesses;
 		for (var i = 0; i < yelp.length; i++) {
+			var categoriesArray = [];
+			for (var c = 0; c < yelp[i].categories.length; c++) {
+				categoriesArray.push(yelp[i].categories[c])
+			}
 			var result = {
 				name: yelp[i].name,
-				rating: yelp[i].rating,
+				rating: yelp[i].rating.toFixed(1),
 				address: yelp[i].location.display_address[0],
 				phone: yelp[i].phone,
 				reviewCount: yelp[i].review_count,
 				image: yelp[i].image_url,
-				coordinates: yelp[i].location.coordinate
+				coordinates: yelp[i].location.coordinate,
+				categories: categoriesArray
 			}
 			$scope.results.Yelp.push(result);
 		}
@@ -118,7 +126,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 		for (var x = 0; x < foursquare.length; x++) {
 			var result = {
 				name: foursquare[x].venue.name,
-				rating: foursquare[x].venue.rating,
+				rating: foursquare[x].venue.rating.toFixed(1),
 				address: foursquare[x].venue.location.address,
 				phone: foursquare[x].venue.contact.phone,
 				reviewCount: foursquare[x].venue.ratingSignals
@@ -142,10 +150,11 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
     });
 
     for (var m = 0; m < locations.length; m++) {
+    	console.log('loc:', locations[m])
     	infowindow = new google.maps.InfoWindow({
 		    content: locations[m].name
 		  });
-    	var content = locations[m].name;
+    	var content = '<div class="infoWindow"><h3>' + locations[m].name + '</h3><div class="biz-card-rating">'+ locations[m].rating +'<i class="fa fa-star"></div><div class="foursquareRating">'+ locations[m].foursquareRating +'<i class="fa fa-foursquare"></i></div><div class="yelpRating">'+ locations[m].yelpRating +'<i class="fa fa-yelp"></i></div></div>'
     	loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
     	marker = new google.maps.Marker({
 	      position: loc,
