@@ -70,7 +70,9 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   					coordinates: $scope.results.Yelp[y].coordinates,
   					categories: $scope.results.Yelp[y].categories,
   					yelpRating: $scope.results.Yelp[y].rating,
-  					foursquareRating: $scope.results.Foursquare[f].rating
+  					foursquareRating: $scope.results.Foursquare[f].rating,
+  					yelpUrl: $scope.results.Yelp[y].url,
+  					foursquareUrl: $scope.results.Foursquare[f].url
   				}
   				// var removed = $scope.results.Yelp.splice(y, 1);
   				// console.log(removed);
@@ -118,6 +120,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 				reviewCount: yelp[i].review_count,
 				image: yelp[i].image_url,
 				coordinates: yelp[i].location.coordinate,
+				url: yelp[i].url,
 				categories: categoriesArray
 			}
 			$scope.results.Yelp.push(result);
@@ -129,7 +132,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 				rating: foursquare[x].venue.rating.toFixed(1),
 				address: foursquare[x].venue.location.address,
 				phone: foursquare[x].venue.contact.phone,
-				reviewCount: foursquare[x].venue.ratingSignals
+				reviewCount: foursquare[x].venue.ratingSignals,
+				url: 'https://foursquare.com/v/' + foursquare[x].venue.id
 			}
 			$scope.results.Foursquare.push(result);
 		}

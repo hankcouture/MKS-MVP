@@ -34,8 +34,12 @@
 			<img ng-src="{{ item.image }}" />
 			<h3 class="biz-card-rating">{{ item.rating }}<i class="fa fa-star"></i></h3>
 			<h3>{{ item.name }}</h3>
-			<div class="foursquareRating">{{ item.foursquareRating }}<i class="fa fa-foursquare"></i></div>
-			<div class="yelpRating">{{ item.yelpRating }}<i class="fa fa-yelp"></i></div>
+			<a ng-href="{{ item.foursquareUrl }}">
+				<div class="foursquareRating">{{ item.foursquareRating }}<i class="fa fa-foursquare"></i></div>
+			</a>
+			<a ng-href="{{ item.yelpUrl }}">
+				<div class="yelpRating">{{ item.yelpRating }}<i class="fa fa-yelp"></i></div>
+			</a>
 			<p>{{ item.address }}</p>
 			<p>{{ item.reviewCount }} reviews</p>
 			<ul class="categories">
