@@ -4,79 +4,111 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 
   $scope.hoods = [];
 
-  	$scope.cities = [["NYC", "NY"],["Chicago", "IL"],["SanFrancisco", "CA"],["Austin", "TX"]];
+  	$scope.cities = [["New York City", "NYC", "NY"],["Chicago", "Chicago", "IL"],["San Francisco", "SF", "CA"],
+  					["Austin", "Austin", "TX"],["Boston", "Boston", "MA"],["Los Angeles", "LA", "CA"]];
 
 	$scope.data = {
-		NYC: {
+		"New York City": {
 			Neighborhoods: [
-				["SoHo", [40.723885, -74.002854]],
-				["Gramercy Park", [40.736243, -73.985002]],
-				["Lower East Side", [40.720291, -73.989164]],
-				["Alphabet City", [40.725462, -73.982212]],
-				["Flatiron", [40.742047, -73.989036]],
-				["Chelsea", [40.746176, -74.001481]],
-				["Times Square", [40.756612, -73.986332]],
-				["Upper East Side", [40.774229, -73.957235]],
-				["West Village", [40.734048, -74.003927]],
-				["Williamsburg", [40.717494, -73.957622]],
-				["Tribeca", [40.716615, -74.008519]],
-				["Financial District", [40.707897, -74.011609]]]
+				["SoHo", "New York City", [40.723885, -74.002854]],
+				["Gramercy Park", "New York City", [40.736243, -73.985002]],
+				["Lower East Side", "New York City", [40.720291, -73.989164]],
+				["Alphabet City", "New York City", [40.725462, -73.982212]],
+				["Flatiron", "New York City", [40.742047, -73.989036]],
+				["Chelsea", "New York City", [40.746176, -74.001481]],
+				["Times Square", "New York City", [40.756612, -73.986332]],
+				["Upper East Side", "New York City", [40.774229, -73.957235]],
+				["West Village", "New York City", [40.734048, -74.003927]],
+				["Williamsburg", "New York City", [40.717494, -73.957622]],
+				["Tribeca", "New York City", [40.716615, -74.008519]],
+				["Financial District", "New York City", [40.707897, -74.011609]]]
 		},
 		Chicago: {
 			Neighborhoods: [
-				["Wicker Park", [41.910295, -87.678140]],
-				["The Loop", [41.882018, -87.629496]],
-				["River North", [41.892102, -87.632800]],
-				["Lincoln Park", [41.922090, -87.644082]],
-				["West Loop", [41.884039, -87.652262]],
-				["Old Town", [41.907595, -87.635676]],
-				["Logan Square", [41.928802, -87.707328]],
-				["Lakeview", [41.940988, -87.661650]],
-				["South Loop", [41.862348, -87.625527]],
-				["Pilsen", [41.856840, -87.656474]],
-				["Hyde Park", [41.794970, -87.592631]],
-				["Streeterville", [41.893444, -87.620012]],
-				["Andersonville", [41.980117, -87.669933]],
-				["Bucktown", [41.920052, -87.680267]],
-				["Wrigleyville", [41.948775, -87.658028]],
-				["Lincoln Square", [41.968552, -87.688805]]]
+				["Wicker Park", 'Chicago', [41.910295, -87.678140]],
+				["The Loop", 'Chicago', [41.882018, -87.629496]],
+				["River North", 'Chicago', [41.892102, -87.632800]],
+				["Lincoln Park", 'Chicago', [41.922090, -87.644082]],
+				["West Loop", 'Chicago', [41.884039, -87.652262]],
+				["Old Town", 'Chicago', [41.907595, -87.635676]],
+				["Logan Square", 'Chicago', [41.928802, -87.707328]],
+				["Lakeview", 'Chicago', [41.940988, -87.661650]],
+				["South Loop", 'Chicago', [41.862348, -87.625527]],
+				["Pilsen", 'Chicago', [41.856840, -87.656474]],
+				["Hyde Park", 'Chicago', [41.794970, -87.592631]],
+				["Streeterville", 'Chicago', [41.893444, -87.620012]],
+				["Andersonville", 'Chicago', [41.980117, -87.669933]],
+				["Bucktown", 'Chicago', [41.920052, -87.680267]],
+				["Wrigleyville", 'Chicago', [41.948775, -87.658028]],
+				["Lincoln Square", 'Chicago', [41.968552, -87.688805]]]
 		},
-		SanFrancisco: {
+		"San Francisco": {
 			Neighborhoods: [
-				["Mission District", [41.910295, -87.678140]],
-				["SoMa", [41.882018, -87.629496]],
-				["Downtown", [41.892102, -87.632800]],
-				["Nob Hill", [41.922090, -87.644082]],
-				["Financial District", [41.884039, -87.652262]],
-				["The Castro", [41.907595, -87.635676]],
-				["Marina", [41.928802, -87.707328]],
-				["Haight-Ashbury", [41.940988, -87.661650]],
-				["Hayes Valley", [41.862348, -87.625527]],
-				["North Beach", [41.856840, -87.656474]],
-				["Russian Hill", [41.794970, -87.592631]],
-				["Duboce Triangle", [41.893444, -87.620012]]]
+				["Mission District", 'San Francisco', [41.910295, -87.678140]],
+				["SoMa", 'San Francisco', [41.882018, -87.629496]],
+				["Downtown", 'San Francisco', [41.892102, -87.632800]],
+				["Nob Hill", 'San Francisco', [41.922090, -87.644082]],
+				["Financial District", 'San Francisco', [41.884039, -87.652262]],
+				["The Castro", 'San Francisco', [41.907595, -87.635676]],
+				["Marina", 'San Francisco', [41.928802, -87.707328]],
+				["Haight-Ashbury", 'San Francisco', [41.940988, -87.661650]],
+				["Hayes Valley", 'San Francisco', [41.862348, -87.625527]],
+				["North Beach", 'San Francisco', [41.856840, -87.656474]],
+				["Russian Hill", 'San Francisco', [41.794970, -87.592631]],
+				["Duboce Triangle", 'San Francisco', [41.893444, -87.620012]]]
 		},
 		Austin: {
 			Neighborhoods: [
-				["Downtown", [41.910295, -87.678140]],
-				["East Austin", [41.882018, -87.629496]],
-				["South Congress", [41.892102, -87.632800]],
-				["Zilker", [41.922090, -87.644082]],
-				["Hyde Park", [41.884039, -87.652262]],
-				["Travis Heights", [41.907595, -87.635676]],
-				["Bouldin Creek", [41.928802, -87.707328]],
-				["North Loop", [41.940988, -87.661650]],
-				["South Lamar", [41.862348, -87.625527]],
-				["University of Texas", [41.856840, -87.656474]],
-				["Hyde Park", [41.794970, -87.592631]],
-				["Barton Hills", [41.893444, -87.620012]]]
+				["Civic District", "Austin", [30.267866, -97.742067]],
+				["East Austin", "Austin", [30.263418, -97.728763]],
+				["South Congress", "Austin", [30.247860, -97.750382]],
+				["Zilker", "Austin", [30.254903, -97.766518]],
+				["Hyde Park", "Austin", [30.304713, -97.731675]],
+				["Travis Heights", "Austin", [30.243522, -97.744374]],
+				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
+				["North Loop", "Austin", [30.318523, -97.718452]],
+				["South Lamar", "Austin", [30.236997, -97.783512]],
+				["UT Campus", "Austin", [30.287671, -97.741771]],
+				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
+				["Barton Hills", "Austin", [30.252761, -97.786750]]]
+		},
+		Boston: {
+			Neighborhoods: [
+				["Civic District", "Austin", [30.267866, -97.742067]],
+				["East Austin", "Austin", [30.263418, -97.728763]],
+				["South Congress", "Austin", [30.247860, -97.750382]],
+				["Zilker", "Austin", [30.254903, -97.766518]],
+				["Hyde Park", "Austin", [30.304713, -97.731675]],
+				["Travis Heights", "Austin", [30.243522, -97.744374]],
+				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
+				["North Loop", "Austin", [30.318523, -97.718452]],
+				["South Lamar", "Austin", [30.236997, -97.783512]],
+				["UT Campus", "Austin", [30.287671, -97.741771]],
+				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
+				["Barton Hills", "Austin", [30.252761, -97.786750]]]
+		},
+		"Los Angeles": {
+			Neighborhoods: [
+				["Civic District", "Austin", [30.267866, -97.742067]],
+				["East Austin", "Austin", [30.263418, -97.728763]],
+				["South Congress", "Austin", [30.247860, -97.750382]],
+				["Zilker", "Austin", [30.254903, -97.766518]],
+				["Hyde Park", "Austin", [30.304713, -97.731675]],
+				["Travis Heights", "Austin", [30.243522, -97.744374]],
+				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
+				["North Loop", "Austin", [30.318523, -97.718452]],
+				["South Lamar", "Austin", [30.236997, -97.783512]],
+				["UT Campus", "Austin", [30.287671, -97.741771]],
+				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
+				["Barton Hills", "Austin", [30.252761, -97.786750]]]
 		}
+
 	}
 
   $scope.options = [
-  ["Coffee"], ["Bars"], ["Thai"], ["Burgers"], 
-  ["Tacos"], ["Cocktails"], ["Pizza"], ["Breakfast"],
-  ["Italian"], ["Brunch"], ["Sandwiches"], ["Indian"]
+  ["Coffee", "Coffee"], ["Bars", "Bars"], ["Thai", "Thai"], ["Burgers", "Burgers"], 
+  ["Tacos", "Tacos"], ["Cocktails", "Cocktails"], ["Pizza", "Pizza"], ["Breakfast", "Breakfast"],
+  ["Italian", "Italian"], ["Brunch", "Brunch"], ["Sandwiches", "Sandwiches"], ["Indian", "Indian"]
   ];
 
   $scope.results = {
@@ -165,8 +197,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
       url: '/',
       data: {
       	term: $scope.selectedOption[0],
-      	location: $scope.selectedHood[0] +', '+$scope.selectedCity[1],
-      	coordinates: $scope.selectedHood[1]
+      	location: $scope.selectedHood[0] +', '+$scope.selectedCity[2],
+      	coordinates: $scope.selectedHood[2]
       }
     })
     .then(function (res) {
@@ -211,7 +243,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
   }
 		
   $scope.initMap = function(locations) {
-    var mapLatLng = {lat: $scope.selectedHood[1][0], lng: $scope.selectedHood[1][1]};
+    var mapLatLng = {lat: $scope.selectedHood[2][0], lng: $scope.selectedHood[2][1]};
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
@@ -253,6 +285,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
   		Foursquare: []
   	};
   	$scope.filteredResults = [];
+  	$scope.loading = false;
   }
 
 
@@ -260,9 +293,9 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 
 neighborhoods.directive('myBackgroundImage', function () {
         return function (scope, element, attrs) {
-        	console.log(attrs.myBackgroundImage)
+        	console.log('$scope:', scope)
             element.css({
-                'background-image': 'url("assets/'+ attrs.myBackgroundImage + '/' + scope.item[0] + '.jpg")',
+                'background-image': 'url("assets/'+ attrs.myBackgroundImage + '/' + scope.item[1] + '/' + scope.item[0] + '.jpg")',
                     'background-size': 'cover',
                     'background-repeat': 'no-repeat',
                     'background-position': 'center center'
