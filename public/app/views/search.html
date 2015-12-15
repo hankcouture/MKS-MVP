@@ -1,5 +1,6 @@
 <!-- views/state1.html -->
-<button class="search-button" ng-show="selectedHood" ng-click="clear()"><i class="fa fa-search"></i>New Search</button>
+<button class="search-button" ng-show="selectedCity" ng-click="clear()"><i class="fa fa-search"></i>New Search</button>
+<button id="city" ng-show="selectedCity" ng-click="clearCity()"><i class="fa fa-building"></i>{{ selectedCity[0] }}</button>
 <nav>
 	<h1 ng-show="!selectedCity">Choose City</h1>
 	<h1 ng-show="selectedCity && !selectedHood">Choose Neighborhood</h1>

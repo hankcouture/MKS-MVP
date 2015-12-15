@@ -288,6 +288,10 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
   	$scope.loading = false;
   }
 
+  $scope.clearCity = function(){
+  	$state.reload();
+  }
+
 
 }]);
 

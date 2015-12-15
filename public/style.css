@@ -5,6 +5,22 @@ body {
 	text-align: center;
 }
 
+#city {
+	position: fixed;
+	margin-left: -35%;
+	padding: 8px 12px;
+	font-size: 13px;
+	margin-top: 8px;
+	z-index: 3;
+	border-radius: 3px;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+}
+
+#city:hover {
+	background-color: #e5e5e5;	
+}
+
 nav {
 	z-index: 2;
 	width: 100%;
@@ -252,7 +268,7 @@ nav h1 {
 	margin-left: 5px;
 }
 
-.fa-search {
+.fa-search, .fa-building {
 	margin-right: 5px;
 }
 
