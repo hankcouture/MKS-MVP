@@ -1,12 +1,21 @@
 <!-- views/state1.html -->
 <button class="search-button" ng-show="selectedHood" ng-click="clear()"><i class="fa fa-search"></i>New Search</button>
 <nav>
-	<h1 ng-show="!selectedHood">Choose Neighborhood</h1>
+	<h1 ng-show="!selectedCity">Choose City</h1>
+	<h1 ng-show="selectedCity && !selectedHood">Choose Neighborhood</h1>
 	<h1 ng-show="selectedHood && !selectedOption">Choose Option</h1>
 	<h1 ng-show="selectedHood && selectedOption">Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
 </nav>
 
-<div class="neighborhoods" ng-show="!selectedHood">
+<div class="cities" ng-show="!selectedCity">
+	<div class="cityTile" ng-repeat="item in cities" ng-click="selectCity( item )" my-background-image="Cities">
+		<div class="layer">
+			<h1>{{ item[0] }}</h1>
+		</div>
+	</div>
+</div>
+
+<div class="neighborhoods" ng-show="selectedCity && !selectedHood">
 	<div class="neighborhoodTile" ng-repeat="item in hoods" ng-click="selectHood( item )" my-background-image="Neighborhoods">
 		<div class="layer">
 			<h1>{{ item[0] }}</h1>
@@ -24,6 +33,9 @@
 	</div>
 </div>
 
+<div class="loading-results" ng-show="loading">
+	<img ng-src="assets/loading.gif" />
+</div>
 
 <div class="results" ng-show="selectedHood && selectedOption">
 	<div id="map-container">
@@ -47,7 +59,9 @@
 				<li ng-repeat="category in item.categories">{{ category[0] }}</li>
 			</ul>
 		</div>
-<!-- 		<div class="biz-card" ng-repeat="item in results.Yelp">
+<!-- 		<hr/>
+		<h1>Yelp</h1>
+		<div class="biz-card" ng-repeat="item in results.Yelp">
 			<img ng-src="{{ item.image }}"/>
 			<h3>{{ item.name }}</h3>
 			<div class="yelpRating">{{ item.rating }}<i class="fa fa-yelp"></i></div>

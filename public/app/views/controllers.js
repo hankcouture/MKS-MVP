@@ -1,25 +1,78 @@
 var neighborhoods = angular.module('mvp.neighborhoods', [])
 
-neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function($scope, $http) {
+neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state', function($scope, $http, $state) {
 
-  $scope.hoods = [
-  ["Wicker Park", [41.910295, -87.678140]],
-  ["The Loop", [41.882018, -87.629496]],
-  ["River North", [41.892102, -87.632800]],
-  ["Lincoln Park", [41.922090, -87.644082]],
-  ["West Loop", [41.884039, -87.652262]],
-  ["Old Town", [41.907595, -87.635676]],
-  ["Logan Square", [41.928802, -87.707328]],
-  ["Lakeview", [41.940988, -87.661650]],
-  ["South Loop", [41.862348, -87.625527]],
-  ["Pilsen", [41.856840, -87.656474]],
-  ["Hyde Park", [41.794970, -87.592631]],
-  ["Streeterville", [41.893444, -87.620012]],
-  ["Andersonville", [41.980117, -87.669933]],
-  ["Bucktown", [41.920052, -87.680267]],
-  ["Wrigleyville", [41.948775, -87.658028]],
-  ["Lincoln Square", [41.968552, -87.688805]]
-  				];
+  $scope.hoods = [];
+
+  	$scope.cities = [["NYC", "NY"],["Chicago", "IL"],["SanFrancisco", "CA"],["Austin", "TX"]];
+
+	$scope.data = {
+		NYC: {
+			Neighborhoods: [
+				["SoHo", [40.723885, -74.002854]],
+				["Gramercy Park", [40.736243, -73.985002]],
+				["Lower East Side", [40.720291, -73.989164]],
+				["Alphabet City", [40.725462, -73.982212]],
+				["Flatiron", [40.742047, -73.989036]],
+				["Chelsea", [40.746176, -74.001481]],
+				["Times Square", [40.756612, -73.986332]],
+				["Upper East Side", [40.774229, -73.957235]],
+				["West Village", [40.734048, -74.003927]],
+				["Williamsburg", [40.717494, -73.957622]],
+				["Tribeca", [40.716615, -74.008519]],
+				["Financial District", [40.707897, -74.011609]]]
+		},
+		Chicago: {
+			Neighborhoods: [
+				["Wicker Park", [41.910295, -87.678140]],
+				["The Loop", [41.882018, -87.629496]],
+				["River North", [41.892102, -87.632800]],
+				["Lincoln Park", [41.922090, -87.644082]],
+				["West Loop", [41.884039, -87.652262]],
+				["Old Town", [41.907595, -87.635676]],
+				["Logan Square", [41.928802, -87.707328]],
+				["Lakeview", [41.940988, -87.661650]],
+				["South Loop", [41.862348, -87.625527]],
+				["Pilsen", [41.856840, -87.656474]],
+				["Hyde Park", [41.794970, -87.592631]],
+				["Streeterville", [41.893444, -87.620012]],
+				["Andersonville", [41.980117, -87.669933]],
+				["Bucktown", [41.920052, -87.680267]],
+				["Wrigleyville", [41.948775, -87.658028]],
+				["Lincoln Square", [41.968552, -87.688805]]]
+		},
+		SanFrancisco: {
+			Neighborhoods: [
+				["Mission District", [41.910295, -87.678140]],
+				["SoMa", [41.882018, -87.629496]],
+				["Downtown", [41.892102, -87.632800]],
+				["Nob Hill", [41.922090, -87.644082]],
+				["Financial District", [41.884039, -87.652262]],
+				["The Castro", [41.907595, -87.635676]],
+				["Marina", [41.928802, -87.707328]],
+				["Haight-Ashbury", [41.940988, -87.661650]],
+				["Hayes Valley", [41.862348, -87.625527]],
+				["North Beach", [41.856840, -87.656474]],
+				["Russian Hill", [41.794970, -87.592631]],
+				["Duboce Triangle", [41.893444, -87.620012]]]
+		},
+		Austin: {
+			Neighborhoods: [
+				["Downtown", [41.910295, -87.678140]],
+				["East Austin", [41.882018, -87.629496]],
+				["South Congress", [41.892102, -87.632800]],
+				["Zilker", [41.922090, -87.644082]],
+				["Hyde Park", [41.884039, -87.652262]],
+				["Travis Heights", [41.907595, -87.635676]],
+				["Bouldin Creek", [41.928802, -87.707328]],
+				["North Loop", [41.940988, -87.661650]],
+				["South Lamar", [41.862348, -87.625527]],
+				["University of Texas", [41.856840, -87.656474]],
+				["Hyde Park", [41.794970, -87.592631]],
+				["Barton Hills", [41.893444, -87.620012]]]
+		}
+	}
+
   $scope.options = [
   ["Coffee"], ["Bars"], ["Thai"], ["Burgers"], 
   ["Tacos"], ["Cocktails"], ["Pizza"], ["Breakfast"],
@@ -33,6 +86,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 
   $scope.filteredResults = [];
 
+  $scope.loading = false;
 
   $scope.algo = function() {
   	var res = [];
@@ -51,7 +105,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   				match = true;
   			}
   			if (match === true && $scope.results.Foursquare[f].rating) {
-  				var calcRating = function(yelp, foursquare) {
+  				var calcRating = function() {
   					var yelpRating = $scope.results.Yelp[y].rating;
   					var yelpCount = $scope.results.Yelp[y].reviewCount;
   					var fsRating = $scope.results.Foursquare[f].rating;
@@ -70,7 +124,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   					coordinates: $scope.results.Yelp[y].coordinates,
   					categories: $scope.results.Yelp[y].categories,
   					yelpRating: $scope.results.Yelp[y].rating,
-  					foursquareRating: $scope.results.Foursquare[f].rating,
+  					foursquareRating: $scope.results.Foursquare[f].rating.toFixed(1),
   					yelpUrl: $scope.results.Yelp[y].url,
   					foursquareUrl: $scope.results.Foursquare[f].url
   				}
@@ -82,13 +136,23 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   	}
   }
 
+  $scope.selectedCity = undefined;
+  $scope.selectCity = function(city) {
+	$scope.selectedCity = city;
+	console.log('city: ', $scope.selectedCity);
+	$scope.hoods = $scope.data[city[0]].Neighborhoods;
+  }
+
+
   $scope.selectedHood = undefined;
   $scope.selectedOption = undefined;
   $scope.selectHood = function(hood) {
 	$scope.selectedHood = hood;
+	console.log('hood: ', $scope.selectedHood);
   }
   $scope.selectOption = function(option) {
   	$scope.selectedOption = option;
+  	$scope.loading = true;
   	$scope.getResults();
   	console.log('Hood: ', $scope.selectedHood[0]);
   	console.log('Option: ', $scope.selectedOption[0]);
@@ -101,7 +165,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
       url: '/',
       data: {
       	term: $scope.selectedOption[0],
-      	location: $scope.selectedHood[0] +', IL',
+      	location: $scope.selectedHood[0] +', '+$scope.selectedCity[1],
       	coordinates: $scope.selectedHood[1]
       }
     })
@@ -129,7 +193,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 		for (var x = 0; x < foursquare.length; x++) {
 			var result = {
 				name: foursquare[x].venue.name,
-				rating: foursquare[x].venue.rating.toFixed(1),
+				rating: foursquare[x].venue.rating,
 				address: foursquare[x].venue.location.address,
 				phone: foursquare[x].venue.contact.phone,
 				reviewCount: foursquare[x].venue.ratingSignals,
@@ -138,9 +202,10 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 			$scope.results.Foursquare.push(result);
 		}
 		$scope.algo();
-		console.log('Results: ', $scope.filteredResults);
+		console.log('Filtered Results: ', $scope.filteredResults);
 		$scope.initMap($scope.filteredResults);
-		console.log('res', res.data)
+		console.log('Server Results: ', res.data)
+		$scope.loading = false;
 		return res.data;
     });
   }
@@ -154,7 +219,6 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
     });
 
     for (var m = 0; m < locations.length; m++) {
-    	console.log('loc:', locations[m])
     	infowindow = new google.maps.InfoWindow({
 		    content: locations[m].name
 		  });
@@ -181,8 +245,14 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   }
 
   $scope.clear = function(){
+  	// $state.reload();
   	$scope.selectedHood = undefined;
   	$scope.selectedOption = undefined;
+  	$scope.results = {
+  		Yelp: [],
+  		Foursquare: []
+  	};
+  	$scope.filteredResults = [];
   }
 
 
