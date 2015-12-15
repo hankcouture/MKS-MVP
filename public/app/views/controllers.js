@@ -69,7 +69,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 				["North Loop", "Austin", [30.318523, -97.718452]],
 				["South Lamar", "Austin", [30.236997, -97.783512]],
 				["UT Campus", "Austin", [30.287671, -97.741771]],
-				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
+				["Clarksville", "Austin", [30.255833, -97.732716]],
 				["Barton Hills", "Austin", [30.252761, -97.786750]]]
 		},
 		Boston: {

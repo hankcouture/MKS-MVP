@@ -311,7 +311,13 @@ nav h1 {
 	clear: both;
 	background-color: #f9f9f9;
 	margin: 0px auto;
-	padding-top: 140px;
+	padding-top: 90px;
 	z-index: 1;
 	position: fixed;
+}
+
+.loading-results img {
+	height: 40%;
+	border: 1px solid #e5e5e5;
+	border-radius: 200px;
 }
