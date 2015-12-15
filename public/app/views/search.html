@@ -1,8 +1,9 @@
 <!-- views/state1.html -->
+<button class="search-button" ng-show="selectedHood" ng-click="clear()"><i class="fa fa-search"></i>New Search</button>
 <nav>
-  <h1 ng-show="!selectedHood">Choose Neighborhood</h1>
-  <h1 ng-show="selectedHood && !selectedOption">Choose Option</h1>
-  <h1 ng-show="selectedHood && selectedOption">Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
+	<h1 ng-show="!selectedHood">Choose Neighborhood</h1>
+	<h1 ng-show="selectedHood && !selectedOption">Choose Option</h1>
+	<h1 ng-show="selectedHood && selectedOption">Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
 </nav>
 
 <div class="neighborhoods" ng-show="!selectedHood">

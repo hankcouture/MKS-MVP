@@ -180,6 +180,11 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
     }
   }
 
+  $scope.clear = function(){
+  	$scope.selectedHood = undefined;
+  	$scope.selectedOption = undefined;
+  }
+
 
 }]);
 

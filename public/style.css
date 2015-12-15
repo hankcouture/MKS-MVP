@@ -229,10 +229,13 @@ nav h1 {
 	margin-left: 5px;
 }
 
+.fa-search {
+	margin-right: 5px;
+}
+
 .categories {
 	margin: 5px;
 	height: 20px;
-
 }
 
 .categories li {
@@ -245,4 +248,20 @@ nav h1 {
 	color: #000;
 	border: 1px solid #e5e5e5;
 	border-radius: 2px;
+}
+
+.search-button {
+	position: fixed;
+	margin-left: -45%;
+	padding: 8px;
+	font-size: 13px;
+	margin-top: 8px;
+	z-index: 2;
+	border-radius: 3px;
+	border: 1px solid #e5e5e5;
+	background-color: #fff;
+}
+
+.search-button:hover {
+	background-color: #e5e5e5;	
 }
