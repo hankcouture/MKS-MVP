@@ -19,12 +19,10 @@ app.post('/', function(req, res) {
 	res.setHeader('Content-Type', "application/json");
 	req.on('data', function (data) {
         dataParsed = JSON.parse(data);
-        console.log('DATA:', dataParsed);
+        console.log(dataParsed);
         yelp.search(dataParsed.term, dataParsed.location, dataParsed.coordinates, function(yData){
         	var yelpData = yData;
         	foursquare.search(dataParsed.term, dataParsed.coordinates, function(err, fData) {
-        		console.log(err)
-        		console.log(fData)
 	        	var foursquareData = fData;
 	        	var results = {
 	        		Yelp: yData,

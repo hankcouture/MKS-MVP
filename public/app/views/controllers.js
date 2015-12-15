@@ -4,19 +4,27 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
 
   $scope.hoods = [
   ["Wicker Park", [41.910295, -87.678140]],
-  ["Lincoln Park", [41.922090, -87.644082]],
-  ["Logan Square", [41.928802, -87.707328]],
   ["The Loop", [41.882018, -87.629496]],
-  ["Wrigleyville", [41.948775, -87.658028]],
-  ["Lakeview", [41.940988, -87.661650]],
-  ["Pilsen", [41.856840, -87.656474]],
+  ["River North", [41.892102, -87.632800]],
+  ["Lincoln Park", [41.922090, -87.644082]],
   ["West Loop", [41.884039, -87.652262]],
-  ["Andersonville", [41.980117, -87.669933]],
+  ["Old Town", [41.907595, -87.635676]],
+  ["Logan Square", [41.928802, -87.707328]],
+  ["Lakeview", [41.940988, -87.661650]],
   ["South Loop", [41.862348, -87.625527]],
+  ["Pilsen", [41.856840, -87.656474]],
   ["Hyde Park", [41.794970, -87.592631]],
-  ["Bucktown", [41.920052, -87.680267]]
+  ["Streeterville", [41.893444, -87.620012]],
+  ["Andersonville", [41.980117, -87.669933]],
+  ["Bucktown", [41.920052, -87.680267]],
+  ["Wrigleyville", [41.948775, -87.658028]],
+  ["Lincoln Square", [41.968552, -87.688805]]
   				];
-  $scope.options = [["Coffee"], ["Bars"], ["Thai"], ["Burgers"], ["Italian"], ["Tacos"], ["Pizza"], ["Indian"]];
+  $scope.options = [
+  ["Coffee"], ["Bars"], ["Thai"], ["Burgers"], 
+  ["Tacos"], ["Cocktails"], ["Pizza"], ["Breakfast"],
+  ["Italian"], ["Brunch"], ["Sandwiches"], ["Indian"]
+  ];
 
   $scope.results = {
   	Yelp: [],
@@ -47,7 +55,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   			if (match === true && $scope.results.Foursquare[f].rating) {
   				var calcRating = function(yelp, foursquare) {
   					var calc = ((yelp*5)+(foursquare*1.5))/4
-  					calc = Math.round(calc * 10)/10;
+  					calc = (Math.round(calc * 10)/10).toFixed(1);
   					return calc;
   				}
   				var biz = {
@@ -56,7 +64,9 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   					rating: calcRating($scope.results.Yelp[y].rating, $scope.results.Foursquare[f].rating),
   					reviewCount: $scope.results.Yelp[y].reviewCount + $scope.results.Foursquare[f].reviewCount,
   					image: $scope.results.Yelp[y].image,
-  					coordinates: $scope.results.Yelp[y].coordinates
+  					coordinates: $scope.results.Yelp[y].coordinates,
+  					yelpRating: $scope.results.Yelp[y].rating,
+  					foursquareRating: $scope.results.Foursquare[f].rating
   				}
   				$scope.filteredResults.push(biz)
   			}
