@@ -45,23 +45,26 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   			var fsName = $scope.results.Foursquare[f].name;
   			var fsAddress = $scope.results.Foursquare[f].address;
   			var fsPhone = $scope.results.Foursquare[f].phone;
-  			if (yName === fsName) {
-  				match = true;
-  			} else if (yAddress === fsAddress) {
+  			if (yAddress === fsAddress) {
   				match = true;
   			} else if (yPhone !== undefined && (yPhone === fsPhone)) {
   				match = true;
-  			};
+  			}
   			if (match === true && $scope.results.Foursquare[f].rating) {
   				var calcRating = function(yelp, foursquare) {
-  					var calc = ((yelp*5)+(foursquare*1.5))/4
+  					var yelpRating = $scope.results.Yelp[y].rating;
+  					var yelpCount = $scope.results.Yelp[y].reviewCount;
+  					var fsRating = $scope.results.Foursquare[f].rating;
+  					var fsCount = $scope.results.Foursquare[f].reviewCount;
+  					var totalCount = yelpCount+fsCount;
+  					var calc = (((yelpRating*2)*yelpCount)+(fsRating*fsCount))/totalCount;
   					calc = (Math.round(calc * 10)/10).toFixed(1);
   					return calc;
   				}
   				var biz = {
   					name: $scope.results.Yelp[y].name,
   					address: $scope.results.Yelp[y].address,
-  					rating: calcRating($scope.results.Yelp[y].rating, $scope.results.Foursquare[f].rating),
+  					rating: calcRating(),
   					reviewCount: $scope.results.Yelp[y].reviewCount + $scope.results.Foursquare[f].reviewCount,
   					image: $scope.results.Yelp[y].image,
   					coordinates: $scope.results.Yelp[y].coordinates,
