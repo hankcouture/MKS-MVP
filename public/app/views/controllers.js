@@ -65,8 +65,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
   					reviewCount: $scope.results.Yelp[y].reviewCount + $scope.results.Foursquare[f].reviewCount,
   					image: $scope.results.Yelp[y].image,
   					coordinates: $scope.results.Yelp[y].coordinates,
-  					yelpRating: $scope.results.Yelp[y].rating,
-  					foursquareRating: $scope.results.Foursquare[f].rating
+  					yelpRating: $scope.results.Yelp[y].rating.toFixed(1),
+  					foursquareRating: $scope.results.Foursquare[f].rating.toFixed(1)
   				}
   				$scope.filteredResults.push(biz)
   			}

@@ -144,7 +144,7 @@ nav h1 {
 	font-size: 12px;
 	padding: 5px 0px;
 	border-radius: 3px;
-	width: 30px;
+	width: 45px;
 	float: right;
 	margin: 20px 5px 0px;
 }
@@ -157,7 +157,11 @@ nav h1 {
 	font-size: 12px;
 	padding: 5px 0px;
 	border-radius: 3px;
-	width: 30px;
+	width: 45px;
 	float: right;
 	margin: 20px 5px 0px;
+}
+
+.fa {
+	margin-left: 5px;
 }
