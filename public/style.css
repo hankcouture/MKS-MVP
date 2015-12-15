@@ -142,7 +142,52 @@ nav h1 {
 }
 
 .infoWindow {
-	width: 100px;
+	width: 150px;
+}
+
+.infoWindow h3 {
+	margin: 0px;
+}
+
+.IW-rating {
+	float: left;
+	margin: 5px 0px 0px;
+	font-size: 12px;
+	background-color: #f9f9f9;
+	font-weight: bold;
+	width: 45px;
+	padding: 5px 0px;
+	border-radius: 3px;
+	text-align: center;
+	border: 1px solid #e5e5e5;
+}
+
+.IW-yelpRating {
+	text-align: center;
+	background-color: #c41200;
+	font-weight: bold;
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 0px;
+	border-radius: 3px;
+	width: 45px;
+	float: left;
+	margin: 5px 4px 0px;
+	border: 1px solid #c41200;
+}
+
+.IW-foursquareRating {
+	text-align: center;
+	background-color: #00B551;
+	font-weight: bold;
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 0px;
+	border-radius: 3px;
+	width: 45px;
+	float: left;
+	margin: 5px 0px 0px;
+	border: 1px solid #00B551;
 }
 
 .yelpRating {

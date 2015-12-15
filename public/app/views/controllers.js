@@ -154,7 +154,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', function(
     	infowindow = new google.maps.InfoWindow({
 		    content: locations[m].name
 		  });
-    	var content = '<div class="infoWindow"><h3>' + locations[m].name + '</h3><div class="biz-card-rating">'+ locations[m].rating +'<i class="fa fa-star"></div><div class="foursquareRating">'+ locations[m].foursquareRating +'<i class="fa fa-foursquare"></i></div><div class="yelpRating">'+ locations[m].yelpRating +'<i class="fa fa-yelp"></i></div></div>'
+    	var content = '<div class="infoWindow"><h3>' + locations[m].name + '</h3><div class="IW-rating">'+ locations[m].rating +'<i class="fa fa-star"></i></div><div class="IW-yelpRating">'+ locations[m].yelpRating +'<i class="fa fa-yelp"></i></div><div class="IW-foursquareRating">'+ locations[m].foursquareRating +'<i class="fa fa-foursquare"></i></div></div>'
     	loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
     	marker = new google.maps.Marker({
 	      position: loc,
