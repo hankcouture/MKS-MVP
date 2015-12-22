@@ -4,10 +4,10 @@ var app = angular.module('mvp', [
 ])
 
 app.config(function($stateProvider, $urlRouterProvider) {
-  //
+
   // For any unmatched url, redirect to /state1
   $urlRouterProvider.otherwise("/search");
-  //
+
   // Now set up the states
   $stateProvider
     .state('search', {
