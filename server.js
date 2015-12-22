@@ -20,9 +20,9 @@ app.post('/', function(req, res) {
 	req.on('data', function (data) {
         dataParsed = JSON.parse(data);
         console.log(dataParsed);
-        yelp.search(dataParsed.term, dataParsed.location, dataParsed.coordinates, function(yData){
+        yelp.search(dataParsed.term, dataParsed.location, dataParsed.coordinates, dataParsed.radius, function(yData){
         	var yelpData = yData;
-        	foursquare.search(dataParsed.term, dataParsed.coordinates, function(err, fData) {
+        	foursquare.search(dataParsed.term, dataParsed.coordinates, dataParsed.radius, function(err, fData) {
 	        	var foursquareData = fData;
 	        	var results = {
 	        		Yelp: yData,

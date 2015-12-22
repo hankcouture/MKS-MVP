@@ -10,67 +10,67 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 	$scope.data = {
 		"New York City": {
 			Neighborhoods: [
-				["SoHo", "New York City", [40.723885, -74.002854]],
-				["Gramercy Park", "New York City", [40.736243, -73.985002]],
-				["Lower East Side", "New York City", [40.720291, -73.989164]],
-				["Alphabet City", "New York City", [40.725462, -73.982212]],
-				["Flatiron", "New York City", [40.742047, -73.989036]],
-				["Chelsea", "New York City", [40.746176, -74.001481]],
-				["Times Square", "New York City", [40.756612, -73.986332]],
-				["Upper East Side", "New York City", [40.774229, -73.957235]],
-				["West Village", "New York City", [40.734048, -74.003927]],
-				["Williamsburg", "New York City", [40.717494, -73.957622]],
-				["Tribeca", "New York City", [40.716615, -74.008519]],
-				["Financial District", "New York City", [40.707897, -74.011609]]]
+				["SoHo", "New York City", [40.723885, -74.002854], 650, 16],
+				["Gramercy Park", "New York City", [40.736243, -73.985002], 650, 16],
+				["Lower East Side", "New York City", [40.720291, -73.989164], 650, 16],
+				["Alphabet City", "New York City", [40.725462, -73.982212], 650, 16],
+				["Flatiron", "New York City", [40.742047, -73.989036], 650, 16],
+				["Chelsea", "New York City", [40.746176, -74.001481], 650, 16],
+				["Times Square", "New York City", [40.756612, -73.986332], 650, 16],
+				["Upper East Side", "New York City", [40.774229, -73.957235], 650, 16],
+				["West Village", "New York City", [40.734048, -74.003927], 650, 16],
+				["Williamsburg", "New York City", [40.717494, -73.957622], 650, 16],
+				["Tribeca", "New York City", [40.716615, -74.008519], 650, 16],
+				["Financial District", "New York City", [40.707897, -74.011609], 650, 16]]
 		},
 		Chicago: {
 			Neighborhoods: [
-				["Wicker Park", 'Chicago', [41.910295, -87.678140]],
-				["The Loop", 'Chicago', [41.882018, -87.629496]],
-				["River North", 'Chicago', [41.892102, -87.632800]],
-				["Lincoln Park", 'Chicago', [41.922090, -87.644082]],
-				["West Loop", 'Chicago', [41.884039, -87.652262]],
-				["Old Town", 'Chicago', [41.907595, -87.635676]],
-				["Logan Square", 'Chicago', [41.928802, -87.707328]],
-				["Lakeview", 'Chicago', [41.940988, -87.661650]],
-				["South Loop", 'Chicago', [41.862348, -87.625527]],
-				["Pilsen", 'Chicago', [41.856840, -87.656474]],
-				["Hyde Park", 'Chicago', [41.794970, -87.592631]],
-				["Streeterville", 'Chicago', [41.893444, -87.620012]],
-				["Andersonville", 'Chicago', [41.980117, -87.669933]],
-				["Bucktown", 'Chicago', [41.920052, -87.680267]],
-				["Wrigleyville", 'Chicago', [41.948775, -87.658028]],
-				["Lincoln Square", 'Chicago', [41.968552, -87.688805]]]
+				["Wicker Park", 'Chicago', [41.910295, -87.678140], 1000, 15],
+				["The Loop", 'Chicago', [41.882018, -87.629496], 1000, 15],
+				["River North", 'Chicago', [41.894900, -87.630417], 1000, 15],
+				["Lincoln Park", 'Chicago', [41.918354, -87.644916], 1000, 15],
+				["West Loop", 'Chicago', [41.884208, -87.648598], 1000, 15],
+				["Old Town", 'Chicago', [41.907658, -87.635174], 800, 15],
+				["Logan Square", 'Chicago', [41.928802, -87.707328], 1000, 15],
+				["Lakeview", 'Chicago', [41.940988, -87.661650], 2200, 14],
+				["South Loop", 'Chicago', [41.862348, -87.625527], 2200, 14],
+				["Pilsen", 'Chicago', [41.856840, -87.656474], 2200, 14],
+				["Hyde Park", 'Chicago', [41.794970, -87.592631], 2200, 14],
+				["Streeterville", 'Chicago', [41.893444, -87.620012], 2200, 14],
+				["Andersonville", 'Chicago', [41.980117, -87.669933], 2200, 14],
+				["Bucktown", 'Chicago', [41.920052, -87.680267], 2200, 14],
+				["Wrigleyville", 'Chicago', [41.948775, -87.658028], 2200, 14],
+				["Lincoln Square", 'Chicago', [41.968552, -87.688805], 2200, 14]]
 		},
 		"San Francisco": {
 			Neighborhoods: [
-				["Mission District", 'San Francisco', [41.910295, -87.678140]],
-				["SoMa", 'San Francisco', [41.882018, -87.629496]],
-				["Downtown", 'San Francisco', [41.892102, -87.632800]],
-				["Nob Hill", 'San Francisco', [41.922090, -87.644082]],
-				["Financial District", 'San Francisco', [41.884039, -87.652262]],
-				["The Castro", 'San Francisco', [41.907595, -87.635676]],
-				["Marina", 'San Francisco', [41.928802, -87.707328]],
-				["Haight-Ashbury", 'San Francisco', [41.940988, -87.661650]],
-				["Hayes Valley", 'San Francisco', [41.862348, -87.625527]],
-				["North Beach", 'San Francisco', [41.856840, -87.656474]],
-				["Russian Hill", 'San Francisco', [41.794970, -87.592631]],
-				["Duboce Triangle", 'San Francisco', [41.893444, -87.620012]]]
+				["Mission District", 'San Francisco', [37.759276, -122.414658], 1000, 15],
+				["SoMa", 'San Francisco', [37.778533, -122.405637], 1000, 15],
+				["Downtown", 'San Francisco', [37.793796, -122.400058], 1000, 15],
+				["Nob Hill", 'San Francisco', [37.793083, -122.415508], 1000, 15],
+				["Financial District", 'San Francisco', [37.793796, -122.400058], 1000, 15],
+				["The Castro", 'San Francisco', [41.907595, -87.635676], 1000, 15],
+				["Marina", 'San Francisco', [41.928802, -87.707328], 1000, 15],
+				["Haight-Ashbury", 'San Francisco', [41.940988, -87.661650], 1000, 15],
+				["Hayes Valley", 'San Francisco', [37.775735, -122.424370], 1000, 15],
+				["North Beach", 'San Francisco', [41.856840, -87.656474], 1000, 15],
+				["Russian Hill", 'San Francisco', [41.794970, -87.592631], 1000, 15],
+				["Duboce Triangle", 'San Francisco', [41.893444, -87.620012], 1000, 15]]
 		},
 		Austin: {
 			Neighborhoods: [
-				["Civic District", "Austin", [30.267866, -97.742067]],
-				["East Austin", "Austin", [30.263418, -97.728763]],
-				["South Congress", "Austin", [30.247860, -97.750382]],
-				["Zilker", "Austin", [30.254903, -97.766518]],
-				["Hyde Park", "Austin", [30.304713, -97.731675]],
-				["Travis Heights", "Austin", [30.243522, -97.744374]],
-				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
-				["North Loop", "Austin", [30.318523, -97.718452]],
-				["South Lamar", "Austin", [30.236997, -97.783512]],
-				["UT Campus", "Austin", [30.287671, -97.741771]],
-				["Clarksville", "Austin", [30.255833, -97.732716]],
-				["Barton Hills", "Austin", [30.252761, -97.786750]]]
+				["Civic District", "Austin", [30.267866, -97.742067], 1000, 15],
+				["East Austin", "Austin", [30.263418, -97.728763], 2200, 14],
+				["South Congress", "Austin", [30.247860, -97.750382], 2200, 14],
+				["Zilker", "Austin", [30.254903, -97.766518], 2200, 14],
+				["Hyde Park", "Austin", [30.304713, -97.731675], 2200, 14],
+				["Travis Heights", "Austin", [30.243522, -97.744374], 2200, 14],
+				["Bouldin Creek", "Austin", [30.255682, -97.755918], 2200, 14],
+				["North Loop", "Austin", [30.318523, -97.718452], 2200, 14],
+				["South Lamar", "Austin", [30.236997, -97.783512], 2200, 14],
+				["UT Campus", "Austin", [30.287671, -97.741771], 2200, 14],
+				["Clarksville", "Austin", [30.255833, -97.732716], 2200, 14],
+				["Barton Hills", "Austin", [30.252761, -97.786750], 2200, 14]]
 		},
 		Boston: {
 			Neighborhoods: [
@@ -126,6 +126,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
   		var yName = $scope.results.Yelp[y].name;
   		var yAddress = $scope.results.Yelp[y].address;
   		var yPhone = $scope.results.Yelp[y].phone;
+  		var added = false;
   		for (var f = 0; f < $scope.results.Foursquare.length; f++) {
   			var match = false;
   			var fsName = $scope.results.Foursquare[f].name;
@@ -160,11 +161,41 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
   					yelpUrl: $scope.results.Yelp[y].url,
   					foursquareUrl: $scope.results.Foursquare[f].url
   				}
-  				// var removed = $scope.results.Yelp.splice(y, 1);
-  				// console.log(removed);
   				$scope.filteredResults.push(biz)
+  				added = true;
   			}
   		}
+		if (!added && ($scope.results.Yelp[y].reviewCount > 10)) {
+			var calcYelpRating = function() {
+				var yelpRating = $scope.results.Yelp[y].rating;
+				var yelpCount = $scope.results.Yelp[y].reviewCount;
+				if (yelpCount > 200) {
+					var calc = $scope.results.Yelp[y].rating * 1.9
+				} else if (yelpCount > 100) {
+					var calc = $scope.results.Yelp[y].rating * 1.8
+				} else if (yelpCount > 50) {
+					var calc = $scope.results.Yelp[y].rating * 1.7
+				} else {
+					var calc = $scope.results.Yelp[y].rating * 1.6
+				}
+				calc = (Math.round(calc * 10)/10).toFixed(1);
+				return calc;
+			}
+	 		var yelpBiz = {
+				name: $scope.results.Yelp[y].name,
+				address: $scope.results.Yelp[y].address,
+				rating: calcYelpRating(),
+				reviewCount: $scope.results.Yelp[y].reviewCount,
+				image: $scope.results.Yelp[y].image,
+				coordinates: $scope.results.Yelp[y].coordinates,
+				categories: $scope.results.Yelp[y].categories,
+				yelpRating: $scope.results.Yelp[y].rating,
+				foursquareRating: '',
+				yelpUrl: $scope.results.Yelp[y].url,
+				foursquareUrl: ''
+			}
+			$scope.filteredResults.push(yelpBiz);
+		}
   	}
   }
 
@@ -198,7 +229,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
       data: {
       	term: $scope.selectedOption[0],
       	location: $scope.selectedHood[0] +', '+$scope.selectedCity[2],
-      	coordinates: $scope.selectedHood[2]
+      	coordinates: $scope.selectedHood[2],
+      	radius: $scope.selectedHood[3]
       }
     })
     .then(function (res) {
@@ -246,7 +278,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
     var mapLatLng = {lat: $scope.selectedHood[2][0], lng: $scope.selectedHood[2][1]};
 
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 14,
+      zoom: $scope.selectedHood[4],
       center: mapLatLng
     });
 
@@ -255,6 +287,9 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 		    content: locations[m].name
 		  });
     	var content = '<div class="infoWindow"><h3>' + locations[m].name + '</h3><div class="IW-rating">'+ locations[m].rating +'<i class="fa fa-star"></i></div><div class="IW-yelpRating">'+ locations[m].yelpRating +'<i class="fa fa-yelp"></i></div><div class="IW-foursquareRating">'+ locations[m].foursquareRating +'<i class="fa fa-foursquare"></i></div></div>'
+    	if (!locations[m].foursquareRating) {
+    		content = '<div class="infoWindow"><h3>' + locations[m].name + '</h3><div class="IW-rating">'+ locations[m].rating +'<i class="fa fa-star"></i></div><div class="IW-yelpRating">'+ locations[m].yelpRating +'<i class="fa fa-yelp"></i></div></div>'
+    	}
     	loc = {lat: locations[m].coordinates.latitude, lng: locations[m].coordinates.longitude};
     	marker = new google.maps.Marker({
 	      position: loc,
@@ -265,7 +300,6 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 		    return function() {
 		        infowindow.setContent(content);
 		        infowindow.open(map, marker);
-		        console.log('hello')
 		    };
 		})(marker,content,infowindow));
 		google.maps.event.addListener(marker,'mouseout', (function(marker,content,infowindow){ 
@@ -297,7 +331,6 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 
 neighborhoods.directive('myBackgroundImage', function () {
         return function (scope, element, attrs) {
-        	console.log('$scope:', scope)
             element.css({
                 'background-image': 'url("assets/'+ attrs.myBackgroundImage + '/' + scope.item[1] + '/' + scope.item[0] + '.jpg")',
                     'background-size': 'cover',
