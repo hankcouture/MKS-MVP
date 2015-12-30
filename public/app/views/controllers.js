@@ -1,6 +1,6 @@
 var neighborhoods = angular.module('mvp.neighborhoods', [])
 
-neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state', function($scope, $http, $state) {
+neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state', 'Helpers', function($scope, $http, $state, Helpers) {
 
 	$scope.hoods = [];
 
@@ -133,9 +133,12 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 				var fsAddress = $scope.results.Foursquare[f].address;
 				var fsPhone = $scope.results.Foursquare[f].phone;
 				if (yAddress === fsAddress) {
-					match = true;
+					if ((Helpers.similar_text(yName, fsName, true)) > 50) {
+						console.log(yName + ' = ' + fsName)
+						match = true;	
+					}
 				} else if (yPhone !== undefined && (yPhone === fsPhone)) {
-					match = true;
+					if ((Helpers.similar_text(yName, fsName, true)) > 50) match = true;
 				}
 				if (match === true && $scope.results.Foursquare[f].rating) {
 					var calcRating = function() {
@@ -145,6 +148,9 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 						var fsCount = $scope.results.Foursquare[f].reviewCount;
 						var totalCount = yelpCount+fsCount;
 						var calc = (((yelpRating*2)*yelpCount)+(fsRating*fsCount))/totalCount;
+						if (totalCount < 50) {
+							var calc = calc * 0.04 * totalCount;
+						}
 						calc = (Math.round(calc * 10)/10).toFixed(1);
 						return calc;
 					}
@@ -169,14 +175,10 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 			var calcYelpRating = function() {
 				var yelpRating = $scope.results.Yelp[y].rating;
 				var yelpCount = $scope.results.Yelp[y].reviewCount;
-				if (yelpCount > 200) {
-					var calc = $scope.results.Yelp[y].rating * 1.9
-				} else if (yelpCount > 100) {
-					var calc = $scope.results.Yelp[y].rating * 1.8
-				} else if (yelpCount > 50) {
-					var calc = $scope.results.Yelp[y].rating * 1.7
+				if (yelpCount > 50) {
+					var calc = $scope.results.Yelp[y].rating * 2
 				} else {
-					var calc = $scope.results.Yelp[y].rating * 1.6
+					var calc = $scope.results.Yelp[y].rating * 0.04 * $scope.results.Yelp[y].reviewCount;
 				}
 				calc = (Math.round(calc * 10)/10).toFixed(1);
 				return calc;
@@ -249,7 +251,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 					image: yelp[i].image_url,
 					coordinates: yelp[i].location.coordinate,
 					url: yelp[i].url,
-					categories: categoriesArray
+					categories: categoriesArray,
+					verified: !yelp[i].is_closed
 				}
 				$scope.results.Yelp.push(result);
 			}
@@ -261,7 +264,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 					address: foursquare[x].venue.location.address,
 					phone: foursquare[x].venue.contact.phone,
 					reviewCount: foursquare[x].venue.ratingSignals,
-					url: 'https://foursquare.com/v/' + foursquare[x].venue.id
+					url: 'https://foursquare.com/v/' + foursquare[x].venue.id,
+					verified: foursquare[x].venue.verified
 				}
 				$scope.results.Foursquare.push(result);
 			}

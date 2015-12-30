@@ -1,4 +1,5 @@
 var app = angular.module('mvp', [
+  'mvp.helpers',
   'mvp.neighborhoods',
   'ui.router'
 ])
