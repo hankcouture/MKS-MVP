@@ -216,7 +216,11 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 		console.log('hood: ', $scope.selectedHood);
 	}
 	$scope.selectOption = function(option) {
-		$scope.selectedOption = option;
+		if (Array.isArray(option)) {
+			$scope.selectedOption = option;
+		} else {
+			$scope.selectedOption = [option];
+		}
 		$scope.loading = true;
 		$scope.getResults();
 		console.log('Hood: ', $scope.selectedHood[0]);

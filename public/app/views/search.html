@@ -27,6 +27,11 @@
 <div>{{ map }}</div>
 
 <div class="options" ng-show="selectedHood && !selectedOption">
+	<div class="foodSearchBar">
+		<form ng-submit="selectOption( searchValue )">
+			<input type="text" ng-model="searchValue" placeholder="Search in {{selectedHood[0]}}"/>
+		</form>
+	</div>
 	<div class="optionsTile" ng-repeat="item in options" ng-click="selectOption( item )" my-background-image="Food">
 		<div class="layer">
 			<h1>{{ item[0] }}</h1>
