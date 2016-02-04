@@ -74,33 +74,33 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 		},
 		Boston: { // Whole Neighborhood needs fixing
 			Neighborhoods: [
-				["Civic District", "Austin", [30.267866, -97.742067]],
-				["East Austin", "Austin", [30.263418, -97.728763]],
-				["South Congress", "Austin", [30.247860, -97.750382]],
-				["Zilker", "Austin", [30.254903, -97.766518]],
-				["Hyde Park", "Austin", [30.304713, -97.731675]],
-				["Travis Heights", "Austin", [30.243522, -97.744374]],
-				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
-				["North Loop", "Austin", [30.318523, -97.718452]],
-				["South Lamar", "Austin", [30.236997, -97.783512]],
-				["UT Campus", "Austin", [30.287671, -97.741771]],
-				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
-				["Barton Hills", "Austin", [30.252761, -97.786750]]]
+				["Downtown", "Boston", [30.267866, -97.742067]],
+				["Kenmore", "Boston", [30.263418, -97.728763]],
+				["Back Bay", "Boston", [30.247860, -97.750382]],
+				["North End", "Boston", [30.254903, -97.766518]],
+				["Harvard Square", "Boston", [30.304713, -97.731675]],
+				["Beacon Hill", "Boston", [30.243522, -97.744374]],
+				["Charleston", "Boston", [30.255682, -97.755918]],
+				["Brookline", "Boston", [30.318523, -97.718452]],
+				["South End", "Boston", [30.236997, -97.783512]],
+				["Cambridge", "Boston", [30.287671, -97.741771]],
+				["Mission Hill", "Boston", [30.255833, -97.732716]],
+				["Coolidge Cornern", "Boston", [30.252761, -97.786750]]]
 		},
 		"Los Angeles": { // Whole Neighborhood needs fixing
 			Neighborhoods: [
-				["Civic District", "Austin", [30.267866, -97.742067]],
-				["East Austin", "Austin", [30.263418, -97.728763]],
-				["South Congress", "Austin", [30.247860, -97.750382]],
-				["Zilker", "Austin", [30.254903, -97.766518]],
-				["Hyde Park", "Austin", [30.304713, -97.731675]],
-				["Travis Heights", "Austin", [30.243522, -97.744374]],
-				["Bouldin Creek", "Austin", [30.255682, -97.755918]],
-				["North Loop", "Austin", [30.318523, -97.718452]],
-				["South Lamar", "Austin", [30.236997, -97.783512]],
-				["UT Campus", "Austin", [30.287671, -97.741771]],
-				["East Cesar Chavez", "Austin", [30.255833, -97.732716]],
-				["Barton Hills", "Austin", [30.252761, -97.786750]]]
+				["Hollywood", "Los Angeles", [30.267866, -97.742067]],
+				["Beverly Hills", "Los Angeles", [30.263418, -97.728763]],
+				["Venice", "Los Angeles", [30.247860, -97.750382]],
+				["Santa Monica", "Los Angeles", [30.254903, -97.766518]],
+				["Downtown", "Los Angeles", [30.304713, -97.731675]],
+				["Marina del Rey", "Los Angeles", [30.243522, -97.744374]],
+				["West Hollywood", "Los Angeles", [30.255682, -97.755918]],
+				["Manhattan Beach", "Los Angeles", [30.318523, -97.718452]],
+				["Culver City", "Los Angeles", [30.236997, -97.783512]],
+				["East Hollywood", "Los Angeles", [30.287671, -97.741771]],
+				["Arts District", "Los Angeles", [30.255833, -97.732716]],
+				["Long Beach", "Los Angeles", [30.252761, -97.786750]]]
 		}
 
 	}
@@ -134,11 +134,14 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 				var fsPhone = $scope.results.Foursquare[f].phone;
 				if (yAddress === fsAddress) {
 					if ((Helpers.similar_text(yName, fsName, true)) > 50) {
-						console.log(yName + ' = ' + fsName)
-						match = true;	
+						match = true;
 					}
 				} else if (yPhone !== undefined && (yPhone === fsPhone)) {
-					if ((Helpers.similar_text(yName, fsName, true)) > 50) match = true;
+					if ((Helpers.similar_text(yName, fsName, true)) > 50) {
+						match = true;
+					}
+				} else if ((Helpers.similar_text(yName, fsName, true)) > 90) {
+					match = true;
 				}
 				if (match === true && $scope.results.Foursquare[f].rating) {
 					var calcRating = function() {
@@ -149,7 +152,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 						var totalCount = yelpCount+fsCount;
 						var calc = (((yelpRating*2)*yelpCount)+(fsRating*fsCount))/totalCount;
 						if (totalCount < 50) {
-							var calc = calc * 0.04 * totalCount;
+							var calc = calc * 0.02 * totalCount;
 						}
 						calc = (Math.round(calc * 10)/10).toFixed(1);
 						return calc;
@@ -176,7 +179,7 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 				var yelpRating = $scope.results.Yelp[y].rating;
 				var yelpCount = $scope.results.Yelp[y].reviewCount;
 				if (yelpCount > 50) {
-					var calc = $scope.results.Yelp[y].rating * 2
+					var calc = $scope.results.Yelp[y].rating * 1.9
 				} else {
 					var calc = $scope.results.Yelp[y].rating * 0.04 * $scope.results.Yelp[y].reviewCount;
 				}
@@ -256,7 +259,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 					coordinates: yelp[i].location.coordinate,
 					url: yelp[i].url,
 					categories: categoriesArray,
-					verified: !yelp[i].is_closed
+					verified: !yelp[i].is_closed,
+					added: false
 				}
 				$scope.results.Yelp.push(result);
 			}
@@ -269,7 +273,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 					phone: foursquare[x].venue.contact.phone,
 					reviewCount: foursquare[x].venue.ratingSignals,
 					url: 'https://foursquare.com/v/' + foursquare[x].venue.id,
-					verified: foursquare[x].venue.verified
+					verified: foursquare[x].venue.verified,
+					added: false
 				}
 				$scope.results.Foursquare.push(result);
 			}
