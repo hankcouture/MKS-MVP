@@ -4,8 +4,8 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 
 	$scope.hoods = [];
 
-  	$scope.cities = [["New York City", "NYC", "NY"],["Chicago", "Chicago", "IL"],["San Francisco", "SF", "CA"],
-  					["Austin", "Austin", "TX"],["Boston", "Boston", "MA"],["Los Angeles", "LA", "CA"]];
+  	$scope.cities = [["New York City", "NYC", "New York City"],["Chicago", "Chicago", "Chicago"],["San Francisco", "SF", "San Francisco"],
+  					["Austin", "Austin", "Austin"],["Boston", "Boston", "MA"],["Los Angeles", "LA", "Los Angeles"]];
 
 	$scope.data = {
 		"New York City": {
@@ -46,16 +46,16 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 			Neighborhoods: [ // Whole Neighborhood needs map checking
 				["Mission District", 'San Francisco', [37.759276, -122.414658], 1000, 15],
 				["SoMa", 'San Francisco', [37.778533, -122.405637], 1000, 15],
-				["Downtown", 'San Francisco', [37.793796, -122.400058], 1000, 15],
+				["Chinatown", 'San Francisco', [37.793796, -122.400058], 1000, 15],
 				["Nob Hill", 'San Francisco', [37.793083, -122.415508], 1000, 15],
 				["Financial District", 'San Francisco', [37.793796, -122.400058], 1000, 15],
-				["The Castro", 'San Francisco', [41.907595, -87.635676], 1000, 15],
-				["Marina", 'San Francisco', [41.928802, -87.707328], 1000, 15],
-				["Haight-Ashbury", 'San Francisco', [41.940988, -87.661650], 1000, 15],
+				["The Castro", 'San Francisco', [37.761439, -122.435009], 1000, 15],
+				["Marina", 'San Francisco', [37.803978, -122.437017], 1000, 15],
+				["Haight-Ashbury", 'San Francisco', [37.769926, -122.446943], 1000, 15],
 				["Hayes Valley", 'San Francisco', [37.775735, -122.424370], 1000, 15],
-				["North Beach", 'San Francisco', [41.856840, -87.656474], 1000, 15],
-				["Russian Hill", 'San Francisco', [41.794970, -87.592631], 1000, 15],
-				["Duboce Triangle", 'San Francisco', [41.893444, -87.620012], 1000, 15]]
+				["North Beach", 'San Francisco', [37.806475, -122.410428], 1000, 15],
+				["Russian Hill", 'San Francisco', [37.801493, -122.419559], 1000, 15],
+				["Duboce Triangle", 'San Francisco', [37.768877, -122.432485], 1000, 15]]
 		},
 		Austin: {
 			Neighborhoods: [ // Whole Neighborhood needs map checking
@@ -69,38 +69,38 @@ neighborhoods.controller('NeighborhoodController', ['$scope', '$http', '$state',
 				["North Loop", "Austin", [30.318523, -97.718452], 2200, 14],
 				["South Lamar", "Austin", [30.236997, -97.783512], 2200, 14],
 				["UT Campus", "Austin", [30.287671, -97.741771], 2200, 14],
-				["Clarksville", "Austin", [30.255833, -97.732716], 2200, 14],
+				["Clarksville", "Austin", [30.279619, -97.759545], 2200, 14],
 				["Barton Hills", "Austin", [30.252761, -97.786750], 2200, 14]]
 		},
 		Boston: { // Whole Neighborhood needs fixing
 			Neighborhoods: [
-				["Downtown", "Boston", [30.267866, -97.742067]],
-				["Kenmore", "Boston", [30.263418, -97.728763]],
-				["Back Bay", "Boston", [30.247860, -97.750382]],
-				["North End", "Boston", [30.254903, -97.766518]],
-				["Harvard Square", "Boston", [30.304713, -97.731675]],
-				["Beacon Hill", "Boston", [30.243522, -97.744374]],
-				["Charleston", "Boston", [30.255682, -97.755918]],
-				["Brookline", "Boston", [30.318523, -97.718452]],
-				["South End", "Boston", [30.236997, -97.783512]],
-				["Cambridge", "Boston", [30.287671, -97.741771]],
-				["Mission Hill", "Boston", [30.255833, -97.732716]],
-				["Coolidge Cornern", "Boston", [30.252761, -97.786750]]]
+				["Downtown", "Boston", [42.359619, -71.057256], 1000, 15],
+				["Kenmore", "Boston", [42.349113, -71.097689], 1000, 15],
+				["Back Bay", "Boston", [42.350622, -71.080634], 1000, 15],
+				["North End", "Boston", [42.365040, -71.053321], 1000, 15],
+				["Harvard Square", "Boston", [42.373226, -71.120444], 1000, 15],
+				["Beacon Hill", "Boston", [42.359170, -71.067681], 1000, 15],
+				["Charleston", "Boston", [42.378054, -71.060226], 1000, 15],
+				["Brookline", "Boston", [42.340351, -71.105710], 1000, 15],
+				["South End", "Boston", [42.339098, -71.076483], 1000, 15],
+				["East Cambridge", "Boston", [42.368829, -71.082174], 1000, 15],
+				["Mission Hill", "Boston", [42.330140, -71.106038], 1000, 15],
+				["Coolidge Corner", "Boston", [42.342978, -71.122662], 1000, 15]]
 		},
 		"Los Angeles": { // Whole Neighborhood needs fixing
 			Neighborhoods: [
-				["Hollywood", "Los Angeles", [30.267866, -97.742067]],
-				["Beverly Hills", "Los Angeles", [30.263418, -97.728763]],
-				["Venice", "Los Angeles", [30.247860, -97.750382]],
-				["Santa Monica", "Los Angeles", [30.254903, -97.766518]],
-				["Downtown", "Los Angeles", [30.304713, -97.731675]],
-				["Marina del Rey", "Los Angeles", [30.243522, -97.744374]],
-				["West Hollywood", "Los Angeles", [30.255682, -97.755918]],
-				["Manhattan Beach", "Los Angeles", [30.318523, -97.718452]],
-				["Culver City", "Los Angeles", [30.236997, -97.783512]],
-				["East Hollywood", "Los Angeles", [30.287671, -97.741771]],
-				["Arts District", "Los Angeles", [30.255833, -97.732716]],
-				["Long Beach", "Los Angeles", [30.252761, -97.786750]]]
+				["Hollywood", "Los Angeles", [34.093924, -118.328925], 1000, 15],
+				["Beverly Hills", "Los Angeles", [34.072840, -118.400522], 1000, 15],
+				["Venice", "Los Angeles", [33.988523, -118.463041], 1000, 15],
+				["Santa Monica", "Los Angeles", [34.020826, -118.489734], 1000, 15],
+				["Downtown", "Los Angeles", [34.041130, -118.247100], 1000, 15],
+				["Marina del Rey", "Los Angeles", [33.972642, -118.457836], 1000, 15],
+				["West Hollywood", "Los Angeles", [34.091636, -118.363947], 1000, 15],
+				["Manhattan Beach", "Los Angeles", [33.886216, -118.406954], 1000, 15],
+				["Culver City", "Los Angeles", [34.020373, -118.396623], 1000, 15],
+				["East Hollywood", "Los Angeles", [34.092016, -118.293813], 1000, 15],
+				["Arts District", "Los Angeles", [34.040661, -118.233750], 1000, 15],
+				["Long Beach", "Los Angeles", [33.772077, -118.193964], 1000, 15]]
 		}
 
 	}
