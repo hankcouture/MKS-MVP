@@ -2,9 +2,11 @@
 <button class="search-button" ng-show="selectedCity" ng-click="clear()"><i class="fa fa-search"></i>New Search</button>
 <button id="city" ng-show="selectedCity" ng-click="clearCity()"><i class="fa fa-building"></i>{{ selectedCity[0] }}</button>
 <nav>
-	<h1 ng-show="!selectedCity">Choose City</h1>
-	<h1 ng-show="selectedCity && !selectedHood">Choose Neighborhood</h1>
-	<h1 ng-show="selectedHood && !selectedOption">Choose Option</h1>
+	<div class="logo-container" ng-show="!selectedOption">
+		<img class="logo-icon" src="../../assets/cutlery.jpg" />
+		<h1>Hungry Hunt</h1>
+		<img class="logo-icon" src="../../assets/cutlery.jpg" />
+	</div>
 	<h1 ng-show="selectedHood && selectedOption">Best {{ selectedOption[0] }} in {{ selectedHood[0] }}</h1>
 </nav>
 

@@ -33,8 +33,25 @@ nav {
 
 nav h1 {
 	margin: 0px;
+	font-weight: 300;
 	font-size: 28px;
 	padding-top: 6px;
+}
+
+.logo-container {
+	width: 300px;
+	text-align: center;
+	margin: 0px auto;
+}
+
+.logo-container h1 {
+	float: left;
+}
+
+.logo-icon {
+	margin: 15px 20px 0px;
+	float: left;
+	width: 25px;
 }
 
 .cities {
