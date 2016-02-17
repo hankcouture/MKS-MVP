@@ -292,6 +292,7 @@ nav h1 {
 .categories {
 	margin: 5px;
 	height: 20px;
+	overflow: hidden;
 }
 
 .categories li {
@@ -359,3 +360,132 @@ nav h1 {
 	border-bottom: 1px solid black;
 	outline: none;
 }
+
+
+
+
+
+/* --------------------------------------------------------------------------------
+-------------------------------------- phone screens------------------------------
+-----------------------------------------------------------------------------------*/
+
+
+@media only screen and (max-width: 600px) {
+
+.search-button {
+	display: none;
+}
+
+#city {
+	display: none;
+}
+
+nav h1 {
+	font-size: 20px;
+	padding-top: 12px;
+}
+
+.logo-container h1 {
+	font-size: 28px;
+	padding-top: 6px;
+}
+
+.cities {
+	width: 100%;
+	padding-top: 51px;
+}
+
+.cityTile {
+	width: 100%;
+	padding: 15% 0%;
+	border: none;
+	border-bottom: 1px solid #fff;
+	box-shadow: none;
+}
+
+.cityTile h1 {
+	padding-top: 10%;
+}
+
+.neighborhoods {
+	width: 100%;
+	padding-top: 51px;
+}
+
+.neighborhoodTile {
+	width: 100%;
+	padding: 15% 0%;
+	border: none;
+	border-bottom: 1px solid #fff;
+	box-shadow: none;
+}
+
+.neighborhoodTile h1 {
+	padding-top: 10%;
+}
+
+.options {
+	width: 100%;
+	padding-top: 51px;
+}
+
+.optionsTile {
+	width: 100%;
+	padding: 15% 0%;
+	border: none;
+	border-bottom: 1px solid #fff;
+	box-shadow: none;
+}
+
+.optionsTile h1 {
+	padding-top: 10%;
+}
+
+.foodSearchBar {
+	margin-bottom: 0px;
+}
+
+.results {
+	width: 100%;
+	padding-top: 51px;
+}
+
+#map-container {
+	display: none;
+}
+
+.results-container {
+	width: 100%;
+	float: none;
+}
+
+.biz-card {
+	margin: 5px;
+}
+
+.biz-card img {
+	height: 58px;
+	border-radius: 10%;
+	margin: 5px 5px 0px 0px;
+}
+
+.biz-card h3, p {
+	font-size: 1.0em;
+	margin: 2px 3px;
+}
+
+.categories {
+	padding: 0px;
+	margin: 5px 5px 0px 0px;
+}
+
+.categories li {
+	font-size: 10px;
+}
+
+.yelpRating, .foursquareRating {
+	font-size: 10px;
+}
+
+}
+
